@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">pract_22_api</string>
+    <string name="text_1">Температура: </string>
+    <string name="text_2">Давление: </string>
+    <string name="text_3">Скорость ветра(м/с): </string>
+    <string name="button_txt">Узнать погоду</string>
+</resources>
