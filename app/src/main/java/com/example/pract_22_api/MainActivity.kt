@@ -38,22 +38,27 @@ class MainActivity : AppCompatActivity() {
                 url,
                 {
                         response ->
-                    val obj = JSONObject(response)
-                    val temp = obj.getJSONObject("main")
-                    Log.d("MyLog","Response^ ${temp.getString("temp")}")
-                    textView1=findViewById(R.id.textVie1)
-                    textView1.setText("Температура = ${temp.getString("temp")}")
+                    try {
+                        val obj = JSONObject(response)
+                        val temp = obj.getJSONObject("main")
+                        Log.d("MyLog", "Response^ ${temp.getString("temp")}")
+                        textView1 = findViewById(R.id.textVie1)
+                        textView1.setText("Температура = ${temp.getString("temp")}")
 
 
-                    val pressure = obj.getJSONObject("main")
-                    textView2=findViewById(R.id.textVie2)
-                    textView2.setText("Давление = ${pressure.getString("pressure")}")
+                        val pressure = obj.getJSONObject("main")
+                        textView2 = findViewById(R.id.textVie2)
+                        textView2.setText("Давление = ${pressure.getString("pressure")}")
 
-                    val speed = obj.getJSONObject("wind")
-                    textView3=findViewById(R.id.textVie3)
-                    textView3.setText("Скорость ветра = ${speed.getString("speed")}")
+                        val speed = obj.getJSONObject("wind")
+                        textView3 = findViewById(R.id.textVie3)
+                        textView3.setText("Скорость ветра = ${speed.getString("speed")}")
 
-
+                    }catch (e: Exception){
+                        var sn= Snackbar.make(findViewById(android.R.id.content),"Ошибка получения данных", Snackbar.LENGTH_LONG)
+                        sn.setActionTextColor(Color.RED)
+                        sn.show()
+                    }
                 },
                 {
                     Log.d("MyLog","Volley error: $it")
